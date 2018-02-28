@@ -5,13 +5,14 @@ Router.configure({
     }
 });
 
-
-Router.route('/main', function () {
-    this.render('mainLayout');
+Router.route('/main', {
+    name: 'mainLayout',
+    waitOn: function() {
+        return Meteor.subscribe('contacts')
+    }
 });
+
 // Default route
-// You can use direct this.render('template')
-// We use Router.go method because dashboard1 is our nested view in menu
 Router.route('/', function () {
     Router.go('main');
 });

@@ -1,0 +1,47 @@
+
+<template name="list">
+    <div class="row side-elements m-t-10">
+        <div class="columns two">&nbsp;</div>
+        <input type="search"  class="columns eight" placeholder="Enter Contact Number here"/>
+        <button class="secondary">Search</button>
+    </div>
+    {{#if contactsLength}}
+    <div class="row">
+        <div class="center">
+            <table>
+                <thead>
+                <tr>
+                    <th>index</th>
+                    <th>Phone #</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each contacts}}
+                    <tr>
+                        <td>{{@index}}</td>
+                        <td>{{phone}}</td>
+                        <td>{{name}}</td>
+                        <td>{{email}}</td>
+                        <td>
+                            <button class="secondary icon-edit"></button>
+                            <button class="secondary icon-trash"></button>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{else}}
+        <section class="zero-state full-width">
+            <article>
+                <h1>No Contacts Found</h1>
+                <p>Add a Contact to see Here</p>
+                <button class="secondary icon-addition"></button>
+            </article>
+        </section>
+    {{/if}}
+</template>
