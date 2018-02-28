@@ -6,3 +6,8 @@
 .m-t-10{
     margin-top: 10px;
 }
+
+.list-wrapper{
+    width: 767px;
+    margin: 0px auto;
+}
