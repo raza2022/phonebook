@@ -30,7 +30,7 @@ Template.list.events({
             });
         }
     },
-    'click #delect-contact': function () {
+    'click #delete-contact': function () {
         Meteor.call('deleteContact', this._id, function (err) {
             if (err) {
                 alert(err.message);
@@ -61,7 +61,9 @@ Template.list.events({
 Template.list.helpers({
     contacts: () => Contacts.find(Session.get('filter')),
 
-    contactsLength: () => Contacts.findOne()
+    contactsLength: () => Contacts.findOne(),
+
+    displayIndex: (index) => index + 1
 });
 
 

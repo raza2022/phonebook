@@ -1,9 +1,11 @@
 
 <template name="list">
-    <div class="row side-elements m-t-10">
-        <div class="columns two">&nbsp;</div>
+    <div class="row m-t-10">
+        <div class="columns two">
+            <a href="{{pathFor 'addContact'}}"><button class="secondary icon-addition"></button></a>
+        </div>
         <input type="search" id="search" class="columns eight" placeholder="Enter Contact Number here"/>
-        <button class="secondary" id="logout">Logout</button>
+        <button class="secondary align-left" id="logout">Logout</button>
     </div>
     {{#if contactsLength}}
     <div class="row">
@@ -21,13 +23,13 @@
                 <tbody>
                 {{#each contacts}}
                     <tr>
-                        <td>{{@index}}</td>
+                        <td>{{displayIndex @index}}</td>
                         <td>{{phone}}</td>
                         <td>{{name}}</td>
                         <td>{{email}}</td>
                         <td>
-                            <a href="{{pathFor 'editContact' id=_id}}"><button class="icon-edit" ></button></a>
-                            <button class="warning icon-trash" id="delect-contact"></button>
+                            <a href="{{pathFor 'editContact' id=_id}}"><button class="icon-edit"></button></a>
+                            <button class="warning icon-trash" id="delete-contact"></button>
                         </td>
                     </tr>
                 {{/each}}
