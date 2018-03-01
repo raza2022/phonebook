@@ -9,5 +9,10 @@
 
 .list-wrapper{
     width: 767px;
-    margin: 0px auto;
+    margin: 0 auto;
+}
+
+.wrapper{
+    width: 400px;
+    margin: 20px auto;
 }

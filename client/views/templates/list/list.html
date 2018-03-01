@@ -26,8 +26,8 @@
                         <td>{{name}}</td>
                         <td>{{email}}</td>
                         <td>
-                            <button class="icon-edit"></button>
-                            <button class="warning icon-trash"></button>
+                            <a href="{{pathFor 'editContact' id=_id}}"><button class="icon-edit" ></button></a>
+                            <button class="warning icon-trash" id="delect-contact"></button>
                         </td>
                     </tr>
                 {{/each}}
@@ -40,7 +40,7 @@
             <article>
                 <h1>No Contacts Found</h1>
                 <p>Add a Contact to see Here</p>
-                <button class="secondary icon-addition"></button>
+                <a href="{{pathFor 'addContact'}}"><button class="default icon-addition"></button></a>
             </article>
         </section>
     {{/if}}

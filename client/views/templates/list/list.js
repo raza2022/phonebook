@@ -29,6 +29,16 @@ Template.list.events({
             });
         }
     },
+    'click #delect-contact': function () {
+        Meteor.call('deleteContact', this._id, function (err) {
+            if (err) {
+                alert(err.message);
+                return;
+            }
+            alert('Contact Removed!');
+
+        });
+    }
 
 });
 

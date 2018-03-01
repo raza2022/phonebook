@@ -15,7 +15,7 @@ Meteor.methods({
 
     updateContact: function(params) {
         check(params, {
-            _id: String,
+            id: String,
             name: String,
             email: String,
             phone: String,
@@ -24,19 +24,17 @@ Meteor.methods({
         let update = {
                 $set: {}
             },
-            _id = params._id;
+            _id = params.id;
         params.name && (update.$set.name = params.name);
         params.email && (update.$set.email = params.email);
         params.phone && (update.$set.phone = params.phone);
         Contacts.update(_id, update);
     },
 
-    deleteContact: function(params) {
-        check(params, {
-            _id: String,
-        });
+    deleteContact: function(id) {
+        check(id, String);
         return Contacts.remove({
-            _id: params._id
+            _id: id
         })
     },
 });

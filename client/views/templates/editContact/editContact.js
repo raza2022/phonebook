@@ -2,12 +2,11 @@
 import Contacts from '../../../../imports/db/Collection/contacts'
 
 /********** Template Events **********/
-Template.addContact.onRendered(() =>{
-
+Template.editContact.onRendered(() =>{
 
 });
 
-Template.addContact.events({
+Template.editContact.events({
     'submit form': function( e, t ) {
         e.preventDefault();
         {
@@ -15,6 +14,7 @@ Template.addContact.events({
             let phone = t.$('#contact-phone').val();
             let email = t.$('#contact-email').val();
             let args = {
+                id: Router.current().params.id,
                 name,
                 phone,
                 email,
@@ -23,12 +23,12 @@ Template.addContact.events({
                 alert('Please fill all required Fields');
                 return
             }
-            Meteor.call('addContact', args, function (err) {
+            Meteor.call('updateContact', args, function (err) {
                 if (err) {
                     console.log(err.message);
                     return;
                 }
-                alert('Contact Created!');
+                alert('Contact Updated!');
                 Router.go('main');
 
             });
@@ -38,10 +38,8 @@ Template.addContact.events({
 });
 
 /********** Template Helpers **********/
-Template.addContact.helpers({
-    contacts: () => Contacts.find(),
-
-    contactsLength: () => Contacts.findOne()
+Template.editContact.helpers({
+    contact: () => Contacts.findOne({_id: Router.current().params.id}),
 });
 
 

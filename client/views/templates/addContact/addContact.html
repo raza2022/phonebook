@@ -1,7 +1,22 @@
 
 <template name="addContact">
-    <div class="row">
-        <label>Label</label>
-        <input type="text" />
+    <div class="wrapper">
+        <form action="">
+            <div class="row">
+                <label class="align-left">Phone No</label>
+                <input type="text" placeholder="Enter Phone No" id="contact-phone" required/>
+            </div>
+            <div class="row">
+                <label class="align-left">Contact Name</label>
+                <input type="text" placeholder="Enter Contact Name" id="contact-name" required/>
+            </div>
+            <div class="row">
+                <label class="align-left">Email</label>
+                <input type="email" placeholder="Enter Contact Email" id="contact-email" required/>
+            </div>
+            <div class="row">
+                <button id="add-contact" type="submit">Add Contact</button>
+            </div>
+        </form>
     </div>
 </template>
