@@ -30,13 +30,38 @@
                         <td>{{email}}</td>
                         <td><img src="{{getGravatar email}}" width="35px" height="35px"></td>
                         <td>
-                            <a href="{{pathFor 'editContact' id=_id}}"><button class="icon-edit"></button></a>
-                            <button class="warning icon-trash" id="delete-contact"></button>
+                            <span class="tip" data-hover="view Details"><button class="warning icon-exclamation" id="view-location" index="{{@index}}"></button></span>
+                            <span class="tip" data-hover="edit Contact"><a href="{{pathFor 'editContact' id=_id}}"><button class="icon-edit"></button></a></span>
+                            <span class="tip" data-hover="delete Contact"><button class="warning icon-trash" id="delete-contact"></button></span>
                         </td>
                     </tr>
                 {{/each}}
                 </tbody>
             </table>
+            {{#if geolocationFound}}
+                <div class="m-t-10 m-b-10">
+                    <table border="1">
+                        <tr>
+                            <th>Code</th>
+                            <th>Country Name</th>
+                            <th>Prefix</th>
+                            <th>Int. Format</th>
+                            <th>Line Type</th>
+                            <th>Location</th>
+                            <th>Number</th>
+                        </tr>
+                        <tr>
+                            <td>{{details.country_code}}</td>
+                            <td>{{details.country_name}}</td>
+                            <td>{{details.country_prefix}}</td>
+                            <td>{{details.international_format}}</td>
+                            <td>{{details.line_type}}</td>
+                            <td>{{details.location}}</td>
+                            <td>{{details.number}}</td>
+                        </tr>
+                    </table>
+                </div>
+            {{/if}}
         </div>
     </div>
     {{else}}

@@ -4,7 +4,9 @@ import { Session } from 'meteor/session'
 
 /********** Template Events **********/
 Template.list.onRendered(() =>{
-    Session.set('filter', {})
+    Session.set('filter', {});
+    Session.set('geolocation', {});
+    Session.set('geolocationShow', false)
 
 });
 
@@ -53,6 +55,21 @@ Template.list.events({
     },
     'click #logout': function () {
         Meteor.logout()
+    },
+
+    'click #view-location': function (e) {
+        let index = e.target.attributes.index.value;
+        Meteor.call('getGeolocation', this.phone, function (err, res) {
+            if(res && !res.success && res.valid){
+                Session.set('geolocation', res);
+                Session.set('geolocationShow', true);
+                Session.set('selectedIndex', index);
+            }
+            else{
+                Session.set('geolocationShow', false);
+                alert('something went wrong')
+            }
+        })
     }
 
 });
@@ -67,8 +84,11 @@ Template.list.helpers({
 
     getGravatar: (email) => {
         return Gravatar.imageUrl(email)
-    }
-});
+    },
 
+    geolocationFound: () => Session.get('geolocationShow'),
+
+    details: () => Session.get('geolocation')
+});
 
 
