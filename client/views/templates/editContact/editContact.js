@@ -29,7 +29,7 @@ Template.editContact.events({
                     return;
                 }
                 alert('Contact Updated!');
-                Router.go('main');
+                Router.go('index');
 
             });
         }

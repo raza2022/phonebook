@@ -9,6 +9,7 @@ Meteor.methods({
             email: String,
             phone: String,
         });
+        params.userId = this.userId;
 
         Contacts.insert(params)
     },

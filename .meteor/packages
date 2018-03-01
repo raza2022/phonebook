@@ -21,3 +21,5 @@ aldeed:simple-schema
 iron:router
 aldeed:collection2@3.0.0
 accounts-password
+session
+zimme:iron-router-auth

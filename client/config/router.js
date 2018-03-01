@@ -1,3 +1,9 @@
+Router.onBeforeAction('authenticate', {except: ['login', 'register']});
+
+Router.configure({
+    authenticate: 'login'
+});
+
 Router.configure({
     layoutTemplate: 'mainLayout',
     waitOn: function() {
@@ -5,8 +11,8 @@ Router.configure({
     }
 });
 
-Router.route('/main', {
-    name: 'main',
+Router.route('/index', {
+    name: 'index',
     template: 'mainLayout',
     yieldTemplates: {
         'list' : {to: 'content'}
@@ -55,5 +61,5 @@ Router.route('/login', {
 
 // Default route
 Router.route('/', function () {
-    Router.go('main');
+    Router.go('index');
 });

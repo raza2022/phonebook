@@ -1,9 +1,10 @@
 // imports
 import Contacts from '../../../../imports/db/Collection/contacts'
+import { Session } from 'meteor/session'
 
 /********** Template Events **********/
 Template.list.onRendered(() =>{
-
+    Session.set('filter', {})
 
 });
 
@@ -38,13 +39,27 @@ Template.list.events({
             alert('Contact Removed!');
 
         });
+    },
+    'keyup #search' : function( e ) {
+        let filter = Session.get('filter');
+        let phone = e.target.value;
+        if (!phone || phone === '') {
+            filter.phone && delete filter.phone;
+        }
+        else {
+            filter.phone = {$regex: phone + " *", $options: "i"};
+        }
+        Session.set('filter', filter)
+    },
+    'click #logout': function () {
+        Meteor.logout()
     }
 
 });
 
 /********** Template Helpers **********/
 Template.list.helpers({
-    contacts: () => Contacts.find(),
+    contacts: () => Contacts.find(Session.get('filter')),
 
     contactsLength: () => Contacts.findOne()
 });

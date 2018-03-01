@@ -18,7 +18,7 @@ Template.login.events({
                 return;
             }
             alert('login Successfully!');
-            Router.go('main');
+            Router.go('index');
         });
     },
 }); 

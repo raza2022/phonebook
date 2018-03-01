@@ -29,7 +29,7 @@ Template.addContact.events({
                     return;
                 }
                 alert('Contact Created!');
-                Router.go('main');
+                Router.go('index');
 
             });
         }
@@ -40,8 +40,6 @@ Template.addContact.events({
 /********** Template Helpers **********/
 Template.addContact.helpers({
     contacts: () => Contacts.find(),
-
-    contactsLength: () => Contacts.findOne()
 });
 
 
