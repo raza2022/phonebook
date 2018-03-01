@@ -63,7 +63,11 @@ Template.list.helpers({
 
     contactsLength: () => Contacts.findOne(),
 
-    displayIndex: (index) => index + 1
+    displayIndex: (index) => index + 1,
+
+    getGravatar: (email) => {
+        return Gravatar.imageUrl(email)
+    }
 });
 
 
